@@ -3,6 +3,7 @@ package pro.likeit.recipes;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -17,7 +18,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
     final String LOG_TAG = "myLogs";
 
-    Button btnAdd, btnRead, btnClear, btnUpd, btnDel;
+    Button btnAdd, btnRead, btnClear, btnUpd, btnDel, btnOpen;
     EditText etName, etEmail, etID;
 
     DBHelper dbHelper;
@@ -32,6 +33,9 @@ public class MainActivity extends Activity implements OnClickListener {
 
         btnRead = (Button) findViewById(R.id.btnRead);
         btnRead.setOnClickListener(this);
+
+        btnOpen = (Button) findViewById(R.id.open);
+        btnOpen.setOnClickListener(this);
 
         btnClear = (Button) findViewById(R.id.btnClear);
         btnClear.setOnClickListener(this);
@@ -129,6 +133,10 @@ public class MainActivity extends Activity implements OnClickListener {
                 // удаляем по id
                 int delCount = db.delete("mytable", "id = " + id, null);
                 Log.d(LOG_TAG, "deleted rows count = " + delCount);
+                break;
+
+            case R.id.open:
+                startActivity(new Intent(MainActivity.this, RecipeCategoryListActivity.class));
                 break;
         }
         // закрываем подключение к БД

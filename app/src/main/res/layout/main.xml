@@ -97,4 +97,11 @@
             android:text="Clear">
         </Button>
     </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open"
+        android:id="@+id/open"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>
